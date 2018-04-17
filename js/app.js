@@ -61,16 +61,13 @@ var Location = function (data) {
 
     //populate info window with foursquare venue results
     this.marker.addListener('click', function () {
-        if (self.marker.getAnimation() !== null) {
+        self.infowindow.setContent('<div>' + self.marker.title + '</div><div>'+ self.address + '</div>' +
+        '<div><a href="' + self.url +'">FourSquare</a></div>');
+        self.infowindow.open(map, this);
+        self.marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(function() {
             self.marker.setAnimation(null);
-        }
-        else {
-            self.marker.setAnimation(google.maps.Animation.BOUNCE);
-            self.infowindow.setContent('<div>' + self.marker.title + '</div><div>'+ self.address + '</div>' +
-            '<div><a href="' + self.url +'">FourSquare</a></div>');
-            self.infowindow.open(map, this);
-        }
-        
+        }, 5000);
     });
 
     //animate the marker when clicked
@@ -128,24 +125,6 @@ function ViewModel() {
             });
         }
     }, self);
-}
-
-//Helper function to show all the coffee from earlier map lessons
-function showBrew() {
-    var bounds = new google.maps.LatLngBounds();
-    // Extend the boundaries of the map for each marker and display the marker
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-        bounds.extend(markers[i].position);
-    }
-    map.fitBounds(bounds);
-}
-
-//Helper function to hide all the coffee from earlier map lessons
-function hideBrew() {
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-    }
 }
 
 //Start the app (called from loading the google maps api)

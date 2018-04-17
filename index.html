@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Map</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -13,8 +13,6 @@
         <div class="options-box">
             <h1>Cold Brew Finder</h1>
             <div>
-                <input class="show-brew" type="button" value="Show The Brew" data-bind="click: showBrew">
-                <input class="hide-brew" type="button" value="Hide The Brew" data-bind="click: hideBrew">
                 <input class="search" type="text" data-bind="textInput: query"></input>
                 <ul data-bind="foreach: filtered">
                     <li data-bind="text: title, click: toggleBounce"></li>
@@ -26,8 +24,9 @@
     <script src="js/lib/knockout-3.2.0.js"></script>
     <script src="js/lib/jquery-3.3.1.js"></script>
     <script src="js/app.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA37qU_WlrLvDpZQ5RDHy2XhNEpjrETY4o&v=3&callback=initApp" onerror="handleError()">
-    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA37qU_WlrLvDpZQ5RDHy2XhNEpjrETY4o&v=3&callback=initApp"
+        onerror="handleError()">
+        </script>
 </body>
 
 </html>
